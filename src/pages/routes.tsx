@@ -8,8 +8,8 @@ function Routes() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Landing}></Route>
-      <Route path="/study" exact component={TeacherList}></Route>
-      <Route path="/give-classes" exact component={TeacherForm}></Route>
+      <Route path="/study" component={TeacherList}></Route>
+      <Route path="/give-classes" component={TeacherForm}></Route>
     </BrowserRouter>
   );
 }
