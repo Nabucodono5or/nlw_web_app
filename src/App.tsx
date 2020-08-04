@@ -1,10 +1,10 @@
 import React from "react";
-import Landing from "./pages/Landing";
 import "./assets/styles/global.css";
+import Routes from "./pages/routes";
 // JSX: xml/html dentro do javascript
 
 function App() {
-  return <Landing />;
+  return <Routes />;
 }
 
 export default App;
