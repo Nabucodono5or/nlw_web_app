@@ -5,9 +5,13 @@ import Input from "../../components/Input";
 import warningIcon from "../../assets/images/icons/warning.svg";
 import Textarea from "../../components/Textarea";
 import Select from "../../components/Select";
+import api from "../../services/api";
+import { useHistory } from "react-router-dom";
 import "./style.css";
 
 function TeacherForm() {
+  const history = useHistory();
+
   const [scheduleItems, setScheduleItems] = useState([
     { week_day: 0, from: "", to: "" },
   ]);
@@ -22,15 +26,24 @@ function TeacherForm() {
   function handleCreateClasses(e: FormEvent) {
     e.preventDefault();
 
-    console.log({
-      name,
-      avatar,
-      whatsapp,
-      bio,
-      subject,
-      cost,
-      scheduleItems,
-    });
+    api
+      .post("classes", {
+        name,
+        avatar,
+        whatsapp,
+        bio,
+        subject,
+        cost: Number(cost),
+        schedule: scheduleItems,
+      })
+      .then(() => {
+        alert("Dados cadastrados com sucesso!");
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro no cadastro!");
+      });
   }
 
   function setScheduleItemValue(
@@ -47,7 +60,6 @@ function TeacherForm() {
     });
 
     setScheduleItems(updateScheduleItem);
-    console.log(scheduleItems);
   }
 
   function addNewScheduleItem() {
@@ -145,7 +157,7 @@ formulário de inscrição."
 
             {scheduleItems.map((scheduleItem, index) => {
               return (
-                <div key={index} className="schedule-item">
+                <div key={scheduleItem.week_day} className="schedule-item">
                   <Select
                     name="week_day"
                     label="Dia da semana"
