@@ -2,8 +2,9 @@ import React from "react";
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
 import warningIcon from "../../assets/images/icons/warning.svg";
-import "./style.css";
 import Textarea from "../../components/Textarea";
+import Select from "../../components/Select";
+import "./style.css";
 
 function TeacherForm() {
   return (
@@ -22,13 +23,29 @@ formulário de inscrição."
             <Input name="name" label="Nome completo" />
             <Input name="avatar" label="Avatar" />
             <Input name="whatsapp" label="whatsapp" />
-            <Textarea name="bio" label="Biografia"/>
+            <Textarea name="bio" label="Biografia" />
           </fieldset>
 
           <fieldset>
             <legend>Sobre a aula</legend>
 
-            <Input name="subject" label="Matéria" />
+            <Select
+              name="subject"
+              label="Matéria"
+              options={[
+                { value: "Artes", label: "Artes" },
+                { value: "Biologia", label: "Biologia" },
+                { value: "Geografia", label: "Geografia" },
+                { value: "Educação física", label: "Educação física" },
+                { value: "Física", label: "Física" },
+                { value: "Química", label: "Química" },
+                { value: "Matemática", label: "Matemática" },
+                { value: "Filosofia", label: "Filosofia" },
+                { value: "História", label: "História" },
+                { value: "Português", label: "Português" },
+                { value: "Ciências", label: "Ciências" },
+              ]}
+            />
             <Input name="cost" label="Custo da sua hora por aula" />
           </fieldset>
 
