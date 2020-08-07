@@ -9,15 +9,11 @@ import "./style.css";
 
 function TeacherForm() {
   const [scheduleItems, setScheduleItems] = useState([
-    { week_day: "0", from: "8:00 AM", to: "12:00 PM" },
-    { week_day: "2", from: "10:00 AM", to: "2:00 PM" },
+    { week_day: "", from: "", to: "" },
   ]);
 
   function addNewScheduleItem() {
-    setScheduleItems([
-      ...scheduleItems,
-      { week_day: "", from: "", to: "" },
-    ]);
+    setScheduleItems([...scheduleItems, { week_day: "", from: "", to: "" }]);
   }
 
   return (
